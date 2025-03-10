@@ -26,4 +26,6 @@ tmp/
 application.properties
 application.yml
 
+.metadata/
+
 
