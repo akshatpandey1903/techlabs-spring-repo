@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aurionpro.crud.dto.PageResponse;
 import com.aurionpro.crud.entity.Employee;
 import com.aurionpro.crud.entity.Role;
-import com.aurionpro.crud.error.EmployeeResponseError;
-import com.aurionpro.crud.exceptions.EmployeeApiException;
 import com.aurionpro.crud.service.EmployeeService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/app")
@@ -34,7 +34,7 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/employees")
-	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<Employee> addEmployee(@RequestBody @Valid Employee employee) {
 		return ResponseEntity.ok(empService.addEmployee(employee));
 	}
 	

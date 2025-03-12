@@ -3,6 +3,8 @@ package com.aurionpro.crud.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,11 +17,16 @@ import com.aurionpro.crud.entity.Role;
 import com.aurionpro.crud.exceptions.EmployeeApiException;
 import com.aurionpro.crud.repository.EmployeeRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class EmployeeServiceImp implements EmployeeService{
 	
 	@Autowired
 	private EmployeeRepository empRepo;
+	
+	private static final Logger Log = LoggerFactory.getLogger(EmployeeServiceImp.class);
 
 	@Override
 	public PageResponse<Employee> getAllEmployees(int pageSize, int pageNumber, String name) {
@@ -44,13 +51,16 @@ public class EmployeeServiceImp implements EmployeeService{
 	@Override
 	public Employee addEmployee(Employee employee) {
 		// TODO Auto-generated method stub
-		return empRepo.save(employee);
+		Employee empDb = empRepo.save(employee);
+		Log.info("Employee added with id:" + employee.getEmpId());
+		return empDb;
 	}
 
 	@Override
 	public void deleteEmployee(Employee employee) {
 		// TODO Auto-generated method stub
 		empRepo.delete(employee);
+		Log.info("Employee with id:" + employee.getEmpId() + " deleted succesfully");
 	}
 
 	@Override
