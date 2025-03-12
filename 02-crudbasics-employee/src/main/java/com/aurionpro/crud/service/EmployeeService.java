@@ -2,14 +2,14 @@ package com.aurionpro.crud.service;
 
 import java.util.List;
 
-
+import com.aurionpro.crud.dto.EmployeeDto;
 import com.aurionpro.crud.dto.PageResponse;
 import com.aurionpro.crud.entity.Employee;
 import com.aurionpro.crud.entity.Role;
 
 public interface EmployeeService {
 	
-	PageResponse<Employee> getAllEmployees(int pageSize, int pageNumber, String name);
+	PageResponse<EmployeeDto> getAllEmployees(int pageSize, int pageNumber, String name);
 	
 	Employee addEmployee(Employee employee);
 	

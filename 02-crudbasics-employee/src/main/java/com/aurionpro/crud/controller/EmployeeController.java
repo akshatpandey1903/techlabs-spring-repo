@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aurionpro.crud.dto.EmployeeDto;
 import com.aurionpro.crud.dto.PageResponse;
 import com.aurionpro.crud.entity.Employee;
 import com.aurionpro.crud.entity.Role;
@@ -29,7 +30,7 @@ public class EmployeeController {
 	private EmployeeService empService;
 	
 	@GetMapping("/employees")
-	public ResponseEntity<PageResponse<Employee>> getEmployees(@RequestParam int pageSize, @RequestParam int pageNumber, @RequestParam(required = false) String name){
+	public ResponseEntity<PageResponse<EmployeeDto>> getEmployees(@RequestParam int pageSize, @RequestParam int pageNumber, @RequestParam(required = false) String name){
 		return ResponseEntity.ok(empService.getAllEmployees(pageSize, pageNumber, name));
 	}
 	
