@@ -9,19 +9,39 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.aurionpro.crud.error.EmployeeResponseError;
+import com.aurionpro.crud.error.ResponseErrorDto;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler
-	public ResponseEntity<EmployeeResponseError> handleApiException(EmployeeApiException e){
-		EmployeeResponseError errorResponse = new EmployeeResponseError();
+	public ResponseEntity<ResponseErrorDto> handleApiException(EmployeeApiException e){
+		ResponseErrorDto errorResponse = new ResponseErrorDto();
 		errorResponse.setMessage(e.getMessage());
 		errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
 		errorResponse.setTime(System.currentTimeMillis());
 		
-		return new ResponseEntity<EmployeeResponseError>(errorResponse, null, HttpStatus.NOT_FOUND.value());
+		return new ResponseEntity<ResponseErrorDto>(errorResponse, null, HttpStatus.NOT_FOUND.value());
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ResponseErrorDto> handleApiException(CourseApiException e){
+		ResponseErrorDto errorResponse = new ResponseErrorDto();
+		errorResponse.setMessage(e.getMessage());
+		errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
+		errorResponse.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ResponseErrorDto>(errorResponse, null, HttpStatus.NOT_FOUND.value());
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ResponseErrorDto> handleApiException(InstructorApiException e){
+		ResponseErrorDto errorResponse = new ResponseErrorDto();
+		errorResponse.setMessage(e.getMessage());
+		errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
+		errorResponse.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ResponseErrorDto>(errorResponse, null, HttpStatus.NOT_FOUND.value());
 	}
 	
 	@ExceptionHandler

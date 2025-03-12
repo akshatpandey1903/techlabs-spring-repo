@@ -1,18 +1,18 @@
 package com.aurionpro.crud.error;
 
-public class EmployeeResponseError {
+public class ResponseErrorDto {
 	private String message;
 	private long time;
 	private int status;
 	
-	public EmployeeResponseError(String message, long time, int status) {
+	public ResponseErrorDto(String message, long time, int status) {
 		super();
 		this.message = message;
 		this.time = time;
 		this.status = status;
 	}
 	
-	public EmployeeResponseError() {
+	public ResponseErrorDto() {
 		super();
 	}
 

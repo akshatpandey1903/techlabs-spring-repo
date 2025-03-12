@@ -6,6 +6,7 @@ import com.aurionpro.crud.dto.PageResponse;
 
 public interface CourseService {
 	
-	PageResponse<CourseResponseDto> getAllEmployees(int pageSize, int pageNumber);
+	PageResponse<CourseResponseDto> getAllCourses(int pageSize, int pageNumber);
 	CourseResponseDto addCourse(CourseRequestDto requestDto);
+	CourseResponseDto getCourseById(int id);
 }
