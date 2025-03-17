@@ -1,4 +1,4 @@
-package com.aurionpro.app.dto;
+package com.aurionpro.app.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class AccountResponseDto {
-	
-	private int userId;
-	private double balance;
-	private String accountNo;
+public class ErrorResponseDto {
+	private String message;
+	private long time;
+	private int status;
 }

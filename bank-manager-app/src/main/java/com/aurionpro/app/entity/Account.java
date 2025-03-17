@@ -19,12 +19,12 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Account {
-    
+	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String accountNo; // Custom-generated
     
     @Column
@@ -32,7 +32,7 @@ public class Account {
     private Double balance;
     
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId")
     private User user;
 }
 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.aurionpro.app.error.ErrorResponseDto;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -22,6 +24,46 @@ public class GlobalExceptionHandler {
 		});
 		
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponseDto> handleApiException(RoleApiException e){
+		ErrorResponseDto responseDto = new ErrorResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
+		responseDto.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponseDto> handleApiException(UserApiException e){
+		ErrorResponseDto responseDto = new ErrorResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
+		responseDto.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponseDto> handleApiException(TransactionApiException e){
+		ErrorResponseDto responseDto = new ErrorResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
+		responseDto.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponseDto> handleApiException(AccountApiException e){
+		ErrorResponseDto responseDto = new ErrorResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
+		responseDto.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
 	}
 }
 

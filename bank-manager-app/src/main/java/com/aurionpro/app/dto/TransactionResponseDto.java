@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class TransactionResponseDto {
-	private int transactionId;
     private String senderAccno;
     private String receiverAccno;
     private Double amount;

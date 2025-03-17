@@ -17,9 +17,10 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Role {
+	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int roleId;
+    private int id;
 
     @NotBlank(message = "Role name is required")
     @Column(nullable = false, unique = true)

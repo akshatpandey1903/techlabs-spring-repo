@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,31 +23,33 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Transaction {
+	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
 
     @NotBlank(message = "Sender account number is required")
-    @Column(nullable = false, length = 12)
+    @Column()
     private String senderAccno;
 
-    @Column(length = 12)
+    @Column()
     private String receiverAccno;
 
     @Min(value = 1, message = "Amount must be at least 1")
-    @Column(nullable = false)
+    @Column()
     private Double amount;
 
     @NotBlank(message = "Transaction type is required")
-    @Column(nullable = false)
-    private String transactionType;
+    @Enumerated(EnumType.STRING)
+    @Column()
+    private TransactionType transactionType;
 
     @NotBlank(message = "Description is required")
     @Size(max = 255, message = "Description cannot exceed 255 characters")
-    @Column(nullable = false)
+    @Column()
     private String description;
 
-    @Column(nullable = false)
+    @Column()
     private LocalDateTime transactionDate;
 }
 

@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class User {
+	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,21 +41,21 @@ public class User {
 
     @NotBlank(message = "Username is required")
     @Size(min = 3, message = "Username must have at least 3 characters")
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String username;
 
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must have at least 6 characters")
-    @Column(nullable = false)
+    @Column()
     private String password;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    @Column(nullable = false, unique = true)
+    @Column()
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "roleId", nullable = false)
+    @JoinColumn(name = "roleId")
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
