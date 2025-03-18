@@ -25,7 +25,7 @@ public class Account {
     private int id;
 
     @Column(unique = true)
-    private String accountNo; // Custom-generated
+    private String accountNo;
     
     @Column
     @Min(value = 500, message = "Minimum balance must be 500.0")

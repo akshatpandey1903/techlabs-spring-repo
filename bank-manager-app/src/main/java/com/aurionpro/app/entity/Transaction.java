@@ -39,7 +39,6 @@ public class Transaction {
     @Column()
     private Double amount;
 
-    @NotBlank(message = "Transaction type is required")
     @Enumerated(EnumType.STRING)
     @Column()
     private TransactionType transactionType;

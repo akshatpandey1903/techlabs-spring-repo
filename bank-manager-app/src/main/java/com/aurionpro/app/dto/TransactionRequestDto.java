@@ -1,5 +1,7 @@
 package com.aurionpro.app.dto;
 
+import com.aurionpro.app.entity.TransactionType;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Min;
@@ -21,9 +23,8 @@ public class TransactionRequestDto {
     @Min(value = 1, message = "Amount must be at least 1")
     private double amount;
     
-    @NotBlank(message = "Transaction type is required")
     @Enumerated(EnumType.STRING)
-    private String transactionType;
+    private TransactionType transactionType;
     
     @NotBlank(message = "Description is required")
     @Size(max = 255, message = "Description cannot exceed 255 characters")

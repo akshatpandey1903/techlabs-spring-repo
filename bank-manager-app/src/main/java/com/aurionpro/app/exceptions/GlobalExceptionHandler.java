@@ -37,6 +37,16 @@ public class GlobalExceptionHandler {
 	}
 	
 	@ExceptionHandler
+	public ResponseEntity<ErrorResponseDto> insufficientBalanceException(InsufficientBalanceException e){
+		ErrorResponseDto responseDto = new ErrorResponseDto();
+		responseDto.setMessage(e.getMessage());
+		responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
+		responseDto.setTime(System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponseDto>(responseDto, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
 	public ResponseEntity<ErrorResponseDto> handleApiException(UserApiException e){
 		ErrorResponseDto responseDto = new ErrorResponseDto();
 		responseDto.setMessage(e.getMessage());
